@@ -1,13 +1,36 @@
 {% extends "base.html" %} {% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-3"></div>
 
-<form action="" method="POST">
-  {{form.hidden_tag()}}
-  <br />
-  {{form.email.label}}{{form.email}} <br />
-  {{form.username.label}}{{form.username}} <br />
-  {{form.password.label}}{{form.password}} <br />
-  {{form.pass_confirm.label}}{{form.pass_confirm}} <br />
-  {{form.submit()}}<br />
-</form>
+      <div class="col-md-6">
+        <h2 style="text-align: center">Registeration Form</h2>
+        <form action="" method="POST">
+          {{form.hidden_tag()}}
 
-{% endblock %}
+          <div class="form-group">
+            {{form.email.label(class='form-group')}}{{form.email(class='form-control')}}
+          </div>
+
+          <div class="form-group">
+            {{form.username.label(class='form-group')}}{{form.username(class='form-control')}}
+          </div>
+
+          <div class="form-group">
+            {{form.password.label(class='form-group')}}{{form.password(class='form-control')}}
+          </div>
+
+          <div class="form-group">
+            {{form.pass_confirm.label(class='form-group')}}{{form.pass_confirm(class='form-control')}}
+          </div>
+
+          <div class="form-group">{{form.submit(class='btn btn-primary')}}</div>
+        </form>
+      </div>
+
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+  {% endblock %}
+</div>
