@@ -16,7 +16,7 @@ class LoginForm(FlaskForm):
 
 class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
-    username = StringField('UserName', validators=[DataRequired(), Email()])
+    username = StringField('UserName', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired(), EqualTo(
         'pass_confirm', message='Passwords must match')])
     pass_confirm = PasswordField(
@@ -25,24 +25,24 @@ class RegistrationForm(FlaskForm):
 
     def check_email(self, field):
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Your email has beem registered already!')
+            raise ValidationError('Your email has been registered already!')
 
     def check_username(self, field):
-        if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Your username has beem registered already!')
+        if User.query.filter_by(username=field.data).first():
+            raise ValidationError('username not available!')
 
 
 class UpdateUserForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
-    username = StringField('UserName', validators=[DataRequired(), Email()])
-    picture = FileField('Update ProfilePicture', validators=[
+    username = StringField('UserName', validators=[DataRequired()])
+    picture = FileField('Update Profile Picture', validators=[
                         FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update')
 
     def check_email(self, field):
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Your email has beem registered already!')
+            raise ValidationError('Your email has been registered already!')
 
     def check_username(self, field):
-        if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Your username has beem registered already!')
+        if User.query.filter_by(username=field.data).first():
+            raise ValidationError('username not available!')
