@@ -93,6 +93,6 @@ def user_posts(username):
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first_or_404()
     blog_posts = BlogPost.query.filter_by(author=user).order_by(
-        BlogPost.date.desc()).paginate(page=page, per_page=5)
+        BlogPost.date.desc()).paginate(page=page, per_page=3)
 
     return render_template('user_blog_posts.html', blog_posts=blog_posts, user=user)
