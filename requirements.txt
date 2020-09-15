@@ -25,7 +25,7 @@ decorator==4.4.2
 defusedxml==0.6.0
 dialogflow==1.0.0
 distlib==0.3.1
-Django==2.0.7
+Django==2.2.13
 django-seed==0.1.9
 django-tastypie==0.14.1
 dnspython==2.0.0
